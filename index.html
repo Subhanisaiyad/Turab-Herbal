@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#0A1F0F"/>
+  <title>Turab Herbal — Nature's Finest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div id="scrollProgress"></div>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div id="announcementBar">
+    <span id="announcementText">🌿 Free delivery on orders above ₹299 · Use code HERBAL10 for 10% OFF</span>
+  </div>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-logo">🌿 TURAB HERBAL</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <!-- PARTICLES -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- SCROLL TO TOP -->
+  <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Scroll to top">↑</button>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mob-close" onclick="closeMobileNav()" aria-label="Close menu">✕</button>
+    <a href="#hero"         onclick="closeMobileNav()">Home</a>
+    <a href="#products"     onclick="closeMobileNav()">Products</a>
+    <a href="#combos"       onclick="closeMobileNav()">Combos</a>
+    <a href="#quiz"         onclick="closeMobileNav()">Skin Quiz</a>
+    <a href="#faq"          onclick="closeMobileNav()">FAQ</a>
+    <a href="#testimonials" onclick="closeMobileNav()">Reviews</a>
+    <a id="mobWaLink" href="#" class="mob-wa-btn" target="_blank" onclick="closeMobileNav()">
+      <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      WhatsApp Order
+    </a>
+  </div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">🌿 TURAB HERBAL</a>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#combos">Combos</a></li>
+      <li><a href="#quiz">Skin Quiz</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a id="navWaLink" href="#" class="nav-wa" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <button class="hamburger" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">✦ Pure · Natural · Handcrafted ✦</div>
+      <h1 class="hero-title">Ancient Wisdom<span class="accent">Meets Modern Healing</span></h1>
+      <p class="hero-sub">Premium herbal skincare handcrafted from nature's finest — trusted by customers across India.</p>
+      <div class="hero-ctas">
+        <a href="#products" class="btn-primary">Explore Products</a>
+        <a id="heroWaLink" href="#" class="btn-outline" target="_blank">💬 WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="hero-scroll"><div class="scroll-line"></div>Scroll</div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-count="500">0</div>
+      <div class="stat-label">Happy Customers</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-count="23">0</div>
+      <div class="stat-label">Herbal Products</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-count="100">0</div>
+      <div class="stat-label">% Natural</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-count="5">0</div>
+      <div class="stat-label">Years of Trust</div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Why Choose Us</span>
+        <h2 class="section-title">Rooted in Nature,<br/>Backed by Science</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal"><span class="feature-icon">🌱</span><h3>100% Pure Herbs</h3><p>Every product uses carefully sourced herbs free from harmful chemicals, preservatives, or synthetic additives.</p></div>
+        <div class="feature-card reveal"><span class="feature-icon">🔬</span><h3>Tested & Verified</h3><p>Formulations based on traditional wisdom validated through modern quality standards.</p></div>
+        <div class="feature-card reveal"><span class="feature-icon">🚚</span><h3>Pan India Delivery</h3><p>Fast delivery across India with careful packaging to ensure your products arrive fresh and potent.</p></div>
+        <div class="feature-card reveal"><span class="feature-icon">💬</span><h3>WhatsApp Support</h3><p>Ask questions, get advice, and order — all through a simple WhatsApp conversation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Our Collection</span>
+        <h2 class="section-title">Premium Herbal Products</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="search-wrap reveal">
+        <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off"/>
+        <span class="search-icon">🔍</span>
+      </div>
+      <div class="search-count" id="searchCount"></div>
+      <div class="filter-bar" id="filterBar"></div>
+      <div class="products-grid" id="productsGrid">
+        <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line w30"></div><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div><div class="skeleton-footer"><div class="skeleton-price"></div><div class="skeleton-btn"></div></div></div></div>
+        <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line w30"></div><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div><div class="skeleton-footer"><div class="skeleton-price"></div><div class="skeleton-btn"></div></div></div></div>
+        <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line w30"></div><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div><div class="skeleton-footer"><div class="skeleton-price"></div><div class="skeleton-btn"></div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMBOS -->
+  <section id="combos">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Best Value</span>
+        <h2 class="section-title">Curated Bundles</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="combos-grid" id="combosGrid">
+        <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div></div></div>
+        <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Find Your Match</span>
+        <h2 class="section-title">Skin Type Quiz</h2>
+        <p class="section-sub">3 Quick Questions — We'll Suggest the Perfect Product For You</p>
+        <div class="section-line"></div>
+      </div>
+      <div class="quiz-box reveal">
+        <div class="quiz-progress">
+          <div class="quiz-dot done" id="qd0"></div>
+          <div class="quiz-dot" id="qd1"></div>
+          <div class="quiz-dot" id="qd2"></div>
+        </div>
+        <div class="quiz-step active" id="qs0">
+          <div class="quiz-q">What is Your Skin Type?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt" onclick="selectOpt(this,0,'oily')"><span class="opt-icon">💧</span><div class="opt-label">Oily</div><div class="opt-sub">Shiny, pimple-prone</div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,0,'dry')"><span class="opt-icon">🍂</span><div class="opt-label">Dry</div><div class="opt-sub">Tight, flaky feeling</div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,0,'combo')"><span class="opt-icon">🌓</span><div class="opt-label">Combination</div><div class="opt-sub">Oily T-zone, dry cheeks</div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,0,'normal')"><span class="opt-icon">✨</span><div class="opt-label">Normal</div><div class="opt-sub">Balanced, few issues</div></div>
+          </div>
+          <div class="quiz-nav"><button class="quiz-btn primary" onclick="nextStep(1)">Next →</button></div>
+        </div>
+        <div class="quiz-step" id="qs1">
+          <div class="quiz-q">What is Your Main Skin Concern?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt" onclick="selectOpt(this,1,'glow')"><span class="opt-icon">🌟</span><div class="opt-label">Glowing Skin</div><div class="opt-sub">Brighter Skin</div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,1,'acne')"><span class="opt-icon">🎯</span><div class="opt-label">Acne / Pimples</div><div class="opt-sub">Clear Skin</div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,1,'tan')"><span class="opt-icon">☀️</span><div class="opt-label">Tan Removal</div><div class="opt-sub">Even Skin Tone</div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,1,'hydration')"><span class="opt-icon">💦</span><div class="opt-label">Hydration</div><div class="opt-sub">Soft Smooth Skin</div></div>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-btn secondary" onclick="nextStep(0)">← Back</button>
+            <button class="quiz-btn primary" onclick="nextStep(2)">Next →</button>
+          </div>
+        </div>
+        <div class="quiz-step" id="qs2">
+          <div class="quiz-q">What is Your Budget Per Product?</div>
+          <div class="quiz-options">
+            <div class="quiz-opt" onclick="selectOpt(this,2,'low')"><span class="opt-icon">🪙</span><div class="opt-label">Under ₹100</div><div class="opt-sub">Budget friendly</div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,2,'mid')"><span class="opt-icon">💰</span><div class="opt-label">₹100 – ₹200</div><div class="opt-sub">Value for money</div></div>
+            <div class="quiz-opt" onclick="selectOpt(this,2,'any')"><span class="opt-icon">🛍️</span><div class="opt-label">No limit</div><div class="opt-sub">Best Quality</div></div>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-btn secondary" onclick="nextStep(1)">← Back</button>
+            <button class="quiz-btn primary" onclick="showQuizResult()">See Results 🌿</button>
+          </div>
+        </div>
+        <div class="quiz-step" id="qsResult">
+          <div class="quiz-result">
+            <h3 id="quizResultTitle">Your Perfect Picks 🌿</h3>
+            <p id="quizResultDesc">Based on your skin type and concerns, these products are best for you:</p>
+            <div class="quiz-recommended" id="quizRecommended"></div>
+            <a id="quizWaBtn" href="#" target="_blank" class="wa-btn" style="display:inline-flex;margin:0 auto 16px;">
+              <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+              Order on WhatsApp
+            </a><br>
+            <button class="quiz-retry" onclick="resetQuiz()">↺ Retake Quiz</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RATINGS -->
+  <section id="ratings">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Customer Feedback</span>
+        <h2 class="section-title">Product Ratings</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="ratings-grid" id="ratingsGrid">
+        <div class="skeleton-card"><div class="skeleton-img" style="height:140px"></div><div class="skeleton-body"><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div></div></div>
+        <div class="skeleton-card"><div class="skeleton-img" style="height:140px"></div><div class="skeleton-body"><div class="skeleton-line w60"></div><div class="skeleton-line w80"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-visual reveal">
+          <div class="why-orbit o1"><div class="orbit-dot"></div></div>
+          <div class="why-orbit o2"><div class="orbit-dot"></div></div>
+          <div class="why-circle">🌿</div>
+        </div>
+        <div class="why-content reveal">
+          <span class="section-eyebrow">Our Philosophy</span>
+          <h2>The Turab Herbal Promise</h2>
+          <p>We believe nature has the answer to most of what ails us. Our mission is to bring those answers to your doorstep — pure, potent, and affordable.</p>
+          <ul class="why-list">
+            <li>Sourced from trusted, sustainable farms across India</li>
+            <li>Prepared using time-honored techniques passed through generations</li>
+            <li>No fillers, no synthetic binders — just pure herbal goodness</li>
+            <li>Personal consultation available via WhatsApp for every customer</li>
+            <li>Satisfaction guaranteed or we make it right</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Customer Stories</span>
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="testimonials-track reveal" id="testimonialsTrack"></div>
+    </div>
+  </section>
+
+  <!-- REVIEW FORM -->
+  <section id="reviewForm">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Share Your Experience</span>
+        <h2 class="section-title">Write a Review</h2>
+        <p class="section-sub">Share Your Experience — Help Others Find The Right Product</p>
+        <div class="section-line"></div>
+      </div>
+      <div class="review-form-box reveal">
+        <div class="form-group">
+          <label>Select Product *</label>
+          <select id="rf-product"><option value="">-- Select a Product --</option></select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="rf-name" placeholder="e.g. Priya Sharma" maxlength="50"/>
+          </div>
+          <div class="form-group">
+            <label>City (Optional)</label>
+            <input type="text" id="rf-location" placeholder="e.g. Surat, Gujarat" maxlength="50"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Give Rating *</label>
+          <div class="star-input">
+            <input type="radio" id="s5" name="rating" value="5"><label for="s5" title="5 stars">★</label>
+            <input type="radio" id="s4" name="rating" value="4"><label for="s4" title="4 stars">★</label>
+            <input type="radio" id="s3" name="rating" value="3"><label for="s3" title="3 stars">★</label>
+            <input type="radio" id="s2" name="rating" value="2"><label for="s2" title="2 stars">★</label>
+            <input type="radio" id="s1" name="rating" value="1"><label for="s1" title="1 star">★</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Write Review *</label>
+          <textarea id="rf-text" rows="4" placeholder="Share Your Experience..." maxlength="300"></textarea>
+        </div>
+        <button class="review-submit-btn" id="reviewSubmitBtn" onclick="submitReview()">✦ Submit Review</button>
+        <div class="form-msg" id="formMsg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Common Questions</span>
+        <h2 class="section-title">Frequently Asked</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="faq-list reveal" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div id="cta-banner">
+    <h2>Ready to Begin Your<br/>Wellness Journey?</h2>
+    <p>Connect with us on WhatsApp and our herbal experts will guide you to the perfect product for your skin.</p>
+    <a id="ctaWaLink" href="#" class="wa-big-btn" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      Start on WhatsApp
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">🌿 TURAB HERBAL</div>
+        <p>Premium herbal skincare crafted from nature's finest ingredients. Pure, trusted, and handcrafted with love.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#combos">Combos</a></li>
+          <li><a href="#quiz">Skin Quiz</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a id="footerWaLink" href="#" target="_blank">💬 WhatsApp Us</a></li>
+          <li><a href="#">📍 Gujarat, India</a></li>
+          <li><a href="https://instagram.com/turabherbal" target="_blank">📸 @turabherbal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Turab Herbal · Gujarat, India · All rights reserved.</span>
+      <span>Made with 🌿 and ❤️</span>
+    </div>
+  </footer>
+
+  <!-- FLOATING WA -->
+  <a id="floatingWa" href="#" class="floating-wa" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- LIGHTBOX -->
+  <div id="imageLightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <img class="lightbox-content" id="lightboxImg" onclick="event.stopPropagation()" alt="Product image"/>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
