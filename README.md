@@ -2,7 +2,7 @@
 
 A modern, responsive herbal products website built with **HTML, CSS, and JavaScript**. The website uses **Google Sheets as a CMS**, **Google Apps Script** for API integration, and **Cloudinary** for image hosting, allowing products and reviews to be managed without editing the website code.
 
-LIVE DEMO :- 
+## LIVE DEMO :- 
 🌐 turabherbal.vercel.app
 
 ## ✨ Features
